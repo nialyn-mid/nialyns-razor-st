@@ -1,0 +1,9 @@
+{
+    "display_name": "Nialyn's Razor",
+    "loading_order": 10,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "author": "nialyns-razor",
+    "version": "1.0.0"
+}

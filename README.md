@@ -16,6 +16,13 @@ calls, no saved state, about 10 ms per turn.
 A note is suppressed when the identical issue set persists for three
 consecutive turns, so the same correction is never repeated back to back.
 
+Guidance is not single-turn. The newest note sits at the very end of the
+context, and the last five replies keep their own signal blocks, each placed
+beside the reply it describes (prompt depth slots `nialyns_razor_h1` to
+`_h5`). An issue that keeps recurring is explained once and then appears as a
+compact `(recurring)` line, so history costs little context and still reads
+as a habit rather than a one-off.
+
 ## Install
 Install from Install Extensions in Extensions menu in SillyTavern. 
 

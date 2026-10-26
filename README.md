@@ -28,9 +28,23 @@ Reload SillyTavern. The extension reads the chat through the stable
 the guidance into extension prompt key `nialyns_razor` (in-chat, depth 2,
 system role, not scannable by lorebooks).
 
+## Ignored content
+
+Text that is machine-readable rather than prose is not scored: paired XML-ish
+blocks such as `<ooc>...</ooc>` or `<state>...</state>`, fenced code blocks,
+balanced `{...}` or `[...]` spans that actually parse as JSON, and stray tag
+markup. Quoted evidence therefore never points at a status line.
+
+This is deliberately blunt. If a reply is mostly or entirely syntax, the turn
+is skipped silently rather than scored on its syntax — no advice is preferred
+over confusing advice. `maxMaskedRatio` (default `1`, i.e. no fallback) is the
+lever; a per-tag exception list is the planned refinement if a model turns out
+to wrap every reply in a tag.
+
 ## Tuning
 
 - Injection spot: KEY / POSITION / DEPTH constants at the top of
   src/adapter/sillytavern.js in the source tree.
-- Detector thresholds, suppression lists, debug mode: build/config.mjs.
+- Detector thresholds, suppression lists, excluded-syntax masking and
+  `maxMaskedRatio`, debug mode: build/config.mjs.
 
